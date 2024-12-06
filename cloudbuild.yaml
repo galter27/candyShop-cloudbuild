@@ -1,5 +1,7 @@
 substitutions:
   _IMAGE_NAME: 'gcr.io/${PROJECT_ID}/candy-shop:${SHORT_SHA}'
+  _SERVICE_NAME: 'candy-shop-service'
+  _REGION: 'us-central1'
 
 steps:
 
@@ -40,6 +42,31 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     id: 'push docker image'
     args: ['push', '$_IMAGE_NAME']
+  
+ # Get .env file for cloudrun
+  - name: gcr.io/cloud-builders/gcloud
+    id: 'get cloudrun .env file'
+    entrypoint: 'bash'
+    args: [ '-c', "gcloud secrets versions access latest --secret=candyshop_cloudrun_env_file --format='get(payload.data)' | tr '_-' '/+' | base64 -d > .env.yaml" ]
+
+    # Deploy the app to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'deploy to cloud run'
+    args:
+      - 'run'
+      - 'deploy'
+      - '$_SERVICE_NAME'
+      - '--image'
+      - '$_IMAGE_NAME'
+      - '--region'
+      - '$_REGION'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '3000' 
+      - '--env-vars-file'
+      - '.env.yaml'
 
 images:
   - $_IMAGE_NAME
