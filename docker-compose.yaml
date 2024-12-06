@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 
 services:
   mongodb:
@@ -23,6 +23,9 @@ services:
 
 networks:
   candy_shop_network:
+    driver: bridge
+    name: cloudbuild
+    external: true
 
 volumes:
   mongo_volume:

@@ -17,22 +17,28 @@ steps:
   # Start compose services
   - name: 'gcr.io/cloud-builders/docker'
     id: 'start compose services'
-    entrypoint: 'bash'
+    entrypoint: 'sh'
     env:
       - 'IMAGE_NAME=${_IMAGE_NAME}'
     args:
       - '-c'
-      - |
-          docker-compose --env-file=.env -f ./docker-compose.yaml up -d
+      - | 
+          docker compose --env-file=.env -f ./docker-compose.yaml up -d 
+          docker compose logs app 
 
+
+
+  - name: 'curlimages/curl'
+    id: 'check app response'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+          sleep 10  # Optional wait time
+          curl -f http://app:3000 || exit 1
 
 images:
   - $_IMAGE_NAME
-
-# availableSecrets:
-#   secretManager:
-#   - versionName: projects/563986191732/secrets/candyshop_compose_env/versions/1
-#     env: 'COMPOSE_ENV_FILE'
 
 options:
   logging: CLOUD_LOGGING_ONLY
