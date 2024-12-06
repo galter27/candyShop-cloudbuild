@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sweetly - Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/public/styles/register.css">
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <div class="form-box">
+        
+        <form action="/register" method="post">
+            <a href="/" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <h3>Register</h3>
+            <input name="name" type="text" placeholder="Name" required>
+            <input name="email" type="email" placeholder="Email" required>
+            <input name="customerId" type="text" placeholder="ID" required maxlength="9">
+            <input class="form-control" name="phone" type="tel" placeholder="Phone Number" required maxlength="10">
+            <input name="password" type="password" placeholder="Password" required>
+            <input name="birthdate" type="date" placeholder="Birthdate" required>
+            <input name="address[town]" type="text" placeholder="Town" required>
+            <input name="address[street]" type="text" placeholder="Street" required>
+            <input name="address[homeNumber]" type="number" placeholder="Home Number" required>
+            <button type="submit" class="button">Register</button>
+            
+        </form>
+    </div>
+</body>
+</html>
+
+

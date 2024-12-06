@@ -1,0 +1,123 @@
+
+  .product-page-card {
+    display: flex;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #F5F5F5;
+    margin: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 50px);
+    box-sizing: border-box;
+  }
+
+  .product-page-image {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%), 
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 20px),
+                #ffc0cb;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .product-page-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+  }
+
+  .favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .favorite-button i:hover {
+    color: red;
+  }
+
+
+  .product-page-info {
+    width: 40%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-page-category {
+    font-size: 20px;
+    color: #D9AAB7;
+    margin-top: 50px;
+  }
+
+  .product-page-name {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .product-page-price {
+    font-size: 30px;
+    color: #D9AAB7;
+    margin-top: 20px;
+  }
+
+  .details {
+    margin-top: 10px;
+  }
+
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    text-align: center  ;
+}
+
+.add-to-cart {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 18px; /* Make the button smaller */
+}
+
+.add-to-cart:hover {
+    background-color: #c0392b;
+}
+
+.decrease, .increase {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+  .vertical-divider {
+    border-left: 2px solid #ccc;
+    margin: 0 20px;
+  }
+
+  
+  .product-page-divider {
+    margin-top: 150px;
+    width: 100%;
+    border: 0;
+    border-top: 2px solid #ccc;
+}

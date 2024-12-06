@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito';
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+/* NavBar 
+------------*/
+
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #d74a6b, #FF6C8E);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    flex-basis: 33%;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 34%;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    flex-basis: 33%;
+} 
+
+.navbar-icon {
+    height: 40px;
+    margin-right: 10px;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.logo {
+    height: 70px;
+    align-items: center;
+}
+
+/* Side Menu
+------------- */
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sideMenu-sign {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sideMenu-content {
+    position: fixed;
+    top: 60px;
+    right: -330px;
+    background-color: #fff;
+    width: 300px;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    transition: right 0.5s ease, opacity 0.5s ease, visibility 0.5s;
+}
+
+.sideMenu-sign .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.sideMenu-sign.active .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);
+}
+
+.sideMenu-sign.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.sideMenu-sign.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);
+}
+
+.sideMenu-content.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #7873f5;
+    font-size: 18px; /* Adjust icon size */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sideMenu-search {
+    position: relative;
+}
+
+.sideMenu-search input {
+    width: 100%;
+    font-size: 20px;
+    padding: 6px 35px 6px 6px; /* Leave space for the icon on the right */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.filter-header {
+    font-size: 14px;
+}
+
+.sideMenu-categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px 0;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.sideMenu-personal {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 90px;
+}
+
+.sideMenu-iconContainer{
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.sideMenu-iconContainer a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.sideMenu-iconContainer:hover {
+    background: linear-gradient(25deg, #ff6ec4, #7873f5);
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.sideMenu-icon {
+    width: 50px;
+    height: auto;
+}
+
+.sideMenu-icon:hover {
+    width: 50px;
+    height: auto;
+}
+
+.sideMenu-iconLabel {
+    font-size: 14px;
+}
+
+.sideMenu-videos {
+    position: fixed;
+    right: 0;
+    top: 60px; /* Adjust based on your navbar height */
+    width: 300px; /* Width of the video commercial area */
+    height: calc(100vh - 60px); /* Full height minus navbar height */
+    z-index: 9; /* Just below the side menu */
+    display: none;
+    flex-direction: column;
+}
+
+.sideMenu-video {
+    width: 100%; /* Adjust video size */
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    flex: 1;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.filter-link {
+    text-decoration: none;
+    margin-top:10px;
+    font-size: 20px;
+}
+
+.filter-link:hover {
+    color:#7873f5;
+}
+
+.side-menu-divider {
+    width: 100%;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-top:10px;
+    margin-bottom: 20px;
+}
+
+.filter-category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-category {
+    width: 100px;
+    text-align: center;
+}
+
+.filter-apply-btn{
+    background-color: #ff6ec4;
+    font-size: 12px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px;
+}
+
+.filter-apply-btn:hover {
+    background:  linear-gradient(25deg, #ff6ec4, #7873f5);;
+}
+
+.side-menu-category{
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.side-menu-category:hover {
+    color: #7873f5;
+    margin-bottom: 10px;
+
+}
+/* Main content of the page
+-----------------------------*/
+
+.page-content {
+    flex: 1;
+    margin-top: 90px;
+    min-height: calc(100vh - 70px); 
+    padding-bottom: 70px; /* Same as footer height */
+
+}
+
+
+/* Footer
+-----------*/
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff; /* White background for the footer */
+    border-top: 1px solid #ddd; /* Top border to match the screenshot */
+    width: 100%;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0; /* Position it at the bottom */
+    left: 0; /* Ensure it spans the entire width */
+    z-index: 9999;}
+
+.footer-left {
+    text-align: left;
+    color: #333;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px; /* Space between the links */
+}
+
+.footer-right a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-right a:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+/* Style for the About Us and Talk To Us links */
+.hover-container {
+    text-align: center;
+}
+
+.hover-container a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.hover-container a:hover {
+    text-decoration: underline;
+}
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+/* Modal content */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Close button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Alerts
+----------*/
+.custom-alert {
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 20px;
+    margin-bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    border-radius: 20px;
+    font-size: 16px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Statistics
+---------------*/
+#candiesChart,#adminChart {
+    max-width: 300px;
+    max-height: 300px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center the canvas */
+}
+
+.modal-content {
+    max-width: 400px; /* Adjust based on your desired modal size */
+    padding: 20px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.currency-dropdown {
+    background-color: #FF6C8E;
+    width: 90px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}

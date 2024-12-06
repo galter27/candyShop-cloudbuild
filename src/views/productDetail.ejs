@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Details</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="/public/styles/main.css">
+        <link rel="stylesheet" href="/public/styles/product_page.css">
+        <!-- Add additional HTML header stuff here -->
+    </head>
+    <body>
+        <!-- Topbar -->
+        <%- include('sideMenu.ejs') %>
+        <section class="page-content">
+            <div class="product-page-card">
+                <div class="product-page-image">
+                  <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                  <button id="addFav" class="favorite-button" onclick="addToFavorites('<%= product.productId %>')">
+                    <i class="fas fa-heart favorite" data-product-id="<%= product.productId %>"></i>
+                </button>
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="product-page-info">
+                    <h4 class="product-page-category"><%= product.sweetType %></h4>
+                    <h2 class="product-page-name"><%= product.name %> | <%= product.description %></h2>
+                    <p class="product-page-price">
+                        <% let price = product.price; %>
+                        <% if (currency === 'USD' && rates['USD']) { %>
+                        <%= (price * rates['USD']).toFixed(2) %> $
+                        <% } else if (currency === 'EUR' && rates['EUR']) { %>
+                        <%= (price * rates['EUR']).toFixed(2) %> €
+                        <% } else { %>
+                        <%= price %> ₪
+                        <% } %>
+                    </p>
+                    <% if (product.inventory === 0) { %>
+                        <span class="stock-banner">Sold Out</span>
+                    <% } else if (product.inventory <= 5) { %>
+                        <span class="stock-banner"><%= product.inventory %> left</span>
+                    <% } %>
+                    <hr class="product-page-divider">
+
+                    <div class="details">
+                        <p><strong>Kosher:</strong> <%= product.kosher %></p>
+                        <p><strong>Allergans:</strong> <%= product.allergans %></p>
+                        <p><strong>Flavors:</strong> <%= product.flavors %></p>
+                    </div>
+                    <hr class="product-page-divider">
+
+                    <div class="quantity-selector">
+                        <button class="decrease" onclick="updateQuantity('<%= product.productId %>', -1, event)">-</button>
+                        <input type="number" name="quantity" id="quantity-<%= product.productId %>" value="1" min="1" max="<%= product.inventory %>" class="quantity-input" readonly>
+                        <button class="increase" onclick="updateQuantity('<%= product.productId %>', 1, event)">+</button>
+                        <button class="add-to-cart" data-product-id="<%= product.productId %>" 
+                            onclick="addToCart(this)">
+                            Add 
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="bthn" lang="en"></div>
+            <div id="prod-add-favorite-alert" class="custom-alert hidden">Product added to favorite</div>
+            <div id="prod-add-cart-alert" class="custom-alert hidden">Product added to cart</div>
+            <div id="prod-exe-cart-alert" class="custom-alert hidden">Product already in your cart</div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <p>© Sweetly | Adi Brodesky | Gal Ternovsky | Shahar Shabtay | Ziv Klein </p>
+            </div>
+            <div class="footer-right">
+                <div class="hover-container">
+                    <a href="#" class="about-us" id="openAboutModal">About Us</a>
+                    |
+                    <a href="#" class="talk-to-us" id="openTalkModal">Talk To Us</a>
+                    |
+                    <a href="https://tinyurl.com/sweetly-facebook" class="facebook">Facebook</a>
+                    |
+                    <a href="#" class="statistics" id="openstatisticsModel">Statistics</a>
+                </div>
+                
+                <!-- Modal for About Us -->
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>About Us</h2>
+                        <p>At Sweetly, we make finding your favorite sweets easy and enjoyable. We have the most special candies and a lot of stores waiting for you!</p>
+                    </div>
+                </div>
+                
+                <!-- Modal for Talk To Us -->
+                <div id="talkModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Talk To Us</h2>
+                        <p>You can reach us at support@candyshop.com or follow us on social media for the latest updates and tips!</p>
+                    </div>
+                </div>
+
+                <!-- Modal for Statistics -->
+                <div id="statisticsModel" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Candies Statistics</h2>
+                        <canvas id="candiesChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="/public/js/products.js"></script>
+        <script src="/public/js/cart.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="/public/js/currency.js"></script>
+    </body>
+</html>

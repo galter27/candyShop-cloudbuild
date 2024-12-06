@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$oid": "672e7df9e340ffc357af734a"
+  },
+  "orderId": "1731100153270",
+  "customerId": "394829080",
+  "orderDate": {
+    "$date": "2024-11-08T21:09:13.270Z"
+  },
+  "totalPrice": 83,
+  "status": "Pending",
+  "products": [
+    {
+      "productId": 2314872,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672e7df9e340ffc357af734b"
+      }
+    },
+    {
+      "productId": 2670143,
+      "quantity": 2,
+      "_id": {
+        "$oid": "672e7df9e340ffc357af734c"
+      }
+    }
+  ],
+  "address": {
+    "city": "shoham",
+    "street": "haetrog",
+    "number": 10,
+    "_id": {
+      "$oid": "672e7df9e340ffc357af734d"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "672e7e29e340ffc357af73bb"
+  },
+  "orderId": "1731100201688",
+  "customerId": "394829080",
+  "orderDate": {
+    "$date": "2024-11-08T21:10:01.688Z"
+  },
+  "totalPrice": 106,
+  "status": "Pending",
+  "products": [
+    {
+      "productId": 9862154,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672e7e29e340ffc357af73bc"
+      }
+    },
+    {
+      "productId": 8232962,
+      "quantity": 3,
+      "_id": {
+        "$oid": "672e7e29e340ffc357af73bd"
+      }
+    }
+  ],
+  "address": {
+    "city": "shoham",
+    "street": "haetrog",
+    "number": 10,
+    "_id": {
+      "$oid": "672e7e29e340ffc357af73be"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "672f672767962ef19afd6dd0"
+  },
+  "orderId": "1731159847288",
+  "customerId": "394829080",
+  "orderDate": {
+    "$date": "2024-11-09T13:44:07.288Z"
+  },
+  "totalPrice": 73,
+  "status": "Pending",
+  "products": [
+    {
+      "productId": 2670143,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672f672767962ef19afd6dd1"
+      }
+    },
+    {
+      "productId": 3969697,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672f672767962ef19afd6dd2"
+      }
+    },
+    {
+      "productId": 2314872,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672f672767962ef19afd6dd3"
+      }
+    }
+  ],
+  "address": {
+    "city": "shoham",
+    "street": "haetrog",
+    "number": 10,
+    "_id": {
+      "$oid": "672f672767962ef19afd6dd4"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "672f67b767962ef19afd6e1a"
+  },
+  "orderId": "1731159991434",
+  "customerId": "394829080",
+  "orderDate": {
+    "$date": "2024-11-09T13:46:31.434Z"
+  },
+  "totalPrice": 25,
+  "status": "Pending",
+  "products": [
+    {
+      "productId": 2314872,
+      "quantity": 1,
+      "_id": {
+        "$oid": "672f67b767962ef19afd6e1b"
+      }
+    }
+  ],
+  "address": {
+    "city": "shoham",
+    "street": "haetrog",
+    "number": 10,
+    "_id": {
+      "$oid": "672f67b767962ef19afd6e1c"
+    }
+  }
+}]

@@ -1,0 +1,28 @@
+/*option container css */
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(to right, #d74a6b, #f8e966, #a3f7c3, #68acce, #b75deb);
+    border-radius: 5px;
+}
+
+.content-item {
+    display: none; /* By default, all content is hidden */
+}
+
+.content-item.active {
+    display: block;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}

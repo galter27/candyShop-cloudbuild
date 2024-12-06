@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Candy Shop - Admin Page</title>
+        <link rel="stylesheet" href="../styles/adminPage.css">
+    </head>
+    <body>  
+        <div class="top-bar">
+            <div class="left-section">
+                <img src="../images/shooping_cart.svg" alt="Icon 1" class="icon">
+                <img src="../images/logout.svg" alt="Icon 1" class="icon">
+            </div>
+            <div class="center-section">
+                <img src="../images/logo.svg" class="logo"> 
+            </div>
+            <div class="right-section">
+                <img src="../images/home_icon.svg" alt="Icon 1" class="icon">
+            </div>
+        </div>
+        <div class="account-section">
+            <div class="account-header">
+                <h2>My Account</h2>
+            </div>
+            <div class="account-content">
+                <div class="account-menu">
+                    <button class="menu-option active" onclick="showContent('customers', this)">All Customers</button>
+                    <button class="menu-option" onclick="showContent('orders', this)">All Orders</button>
+                    <button class="menu-option" onclick="showContent('products', this)">All Products</button>
+                </div>
+                <div class="content">
+                    <div id="customers" class="content-item">This is the content for Option 2.</div>
+                    <div id="orders" class="content-item">This is the content for Option 2.</div>
+                    <div id="products" class="content-item">This is the content for Option 3.</div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/admin_page.js"></script>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+/* General styling for cards */
+.product-preview-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.admin-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    width: 300px; /* Adjust card width to be uniform */
+    padding: 20px;
+    height: 750px;; /* Adjust height to be the same for both cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    width: 300px; /* Adjust card width to be uniform */
+    padding: 20px;
+    height: 360px;; /* Adjust height to be the same for both cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #d9eaff;
+}
+
+.card .info {
+    padding: 10px;
+    background-color: white;
+}
+
+/* Input styling */
+.input-field {
+    border: none;
+    background-color: #ffffff; /* Changed from transparent to white */
+    font-size: 12px; /* Increased font size for better visibility */
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    width: 5px;
+    line-height: 1;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px; /* Adjust spacing between inputs */
+}
+
+.input-group {
+    flex: 1; /* This allows both input fields to share the same width */
+}
+
+.input-group input {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Image upload button with icon */
+.image-upload label {
+    cursor: pointer;
+    font-size: 30px;
+    color: #888;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.image-upload input[type="file"] {
+    display: none; /* Hidden file input */
+}
+
+/* Save button styling */
+.save-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.upload-img {
+    width: 10px;
+}
+
+

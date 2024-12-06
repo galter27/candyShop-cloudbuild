@@ -1,0 +1,305 @@
+h1 {
+    color: #333;
+    text-align: center;
+}
+    
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates responsive columns */
+    gap: 30px; /* Adds space between the cards */
+    padding: 20px;
+    justify-items: center
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    width: 280px;
+    height: 360px; /* Ensure uniform height for all cards */
+    text-align: left;
+    font-family: Arial, sans-serif;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-container {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Set a fixed height to keep consistency */
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%), 
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 20px),
+                #ffc0cb;
+}
+
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.favorite:hover {
+    color: #7873f5;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+.product-info {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.product-text {
+    display: inline-block;
+    text-align: left;
+    max-width: 70%; /* Ensures space for the price */
+    flex-grow: 1; /* Allows the product name section to grow */
+}
+
+/* Shared styles for all input fields */
+input.product-name,
+input.product-price,
+input.product-description,
+input.product-inventory,
+input.product-category {
+    border: none;                 /* Remove border */
+    background: transparent;      /* Transparent background */
+    color: #333;                  /* Text color */
+    font-size: 14px;              /* Font size */
+    font-family: inherit;         /* Inherit font family */
+    outline: none;                /* Remove focus outline */
+    box-sizing: border-box;       /* Include padding in width calculation */
+    padding: 5px 0;               /* Padding to look like normal text */
+    margin: 0;                    /* Remove margin for alignment */
+    cursor: default;              /* Cursor for read-only */
+}
+
+/* Styles specifically for read-only mode */
+input[readonly] {
+    pointer-events: none;         /* Prevent interaction in read-only mode */
+}
+
+/* Additional styles for edit mode */
+input.editable {
+    cursor: text;                 /* Show text cursor when editable */
+}
+
+/* Align inputs to the left or right within the container */
+.left {
+    width: 100%;                  /* Full width for alignment */
+    text-align: left;             /* Align text to the left */
+}
+
+.right {
+    width: 100%;                  /* Full width for alignment */
+    text-align: right;            /* Align text to the right */
+    flex-shrink: 0;               /* Prevent shrinking of right-aligned elements */
+}
+
+/* Layout container for left and right sections */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;                    /* Space between elements */
+    padding: 10px;
+}
+
+.product-text {
+    flex-grow: 2;                 /* Grow to take remaining space */
+    width: 60%;                   /* Takes majority of width */
+}
+
+.product-name {
+    font-weight: bold;  
+}
+    
+.product-price,
+.product-inventory {
+    flex-shrink: 1;               /* Prevent shrinking */
+    width: 40%;                   /* Allocate space for right-aligned items */
+    text-align: right;   
+    font-weight: bold;           /* Align text to the right */
+}
+
+input.product-name , input.product-price{
+    font-weight: bold;          /* Makes the product name bold */
+}
+
+
+.product-divider {
+    width: 90%;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.product-actions {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    text-align: center  ;
+}
+
+.add-to-cart {
+    background-color: #ff6ec4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px; /* Make the button smaller */
+}
+
+.add-to-cart:hover {
+    background: linear-gradient(25deg, #ff6ec4, #7873f5);
+}
+
+.decrease, .increase {
+    background: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+.left-section {
+    display: flex;
+    flex-direction: column; /* Stacks product name and description vertically */
+    flex: 1; /* Ensures the left section takes the remaining space */
+}
+
+.right-section {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    margin-left: 10px;
+    white-space: nowrap; /* Prevents price from wrapping */
+    flex-shrink: 0; /* Prevent the price from shrinking */
+}
+
+
+.stock-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-bottom-right-radius: 10px;
+}
+
+.sold-out {
+    opacity: 0.5; /* Reduce opacity to make it look dark */
+    pointer-events: none; /* Prevent interactions like clicking */
+    filter: grayscale(100%); /* Optional: Make it look grayed out */
+}
+
+.out-of-stock {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%), 
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 20px),
+                #f61a3f;
+    flex: 3;
+    border-top-left-radius: 10px;  /* Set the desired radius */
+    border-top-right-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.product-card.edit-mode {
+    height: auto; /* Allow the card to expand */
+    max-height: 600px; /* Set a maximum height */
+    overflow-y: auto; /* Add scrollbar if content exceeds max-height */
+}
+
+.dropdown-container {
+    display: none;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e1e1e1;
+}
+
+.dropdown-container select {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.edit-mode .dropdown-container {
+    display: block;
+}
+
+/* Adjust the product info section when in edit mode */
+.edit-mode .product-info {
+    flex-direction: column;
+}
+
+.edit-mode .product-text {
+    width: 100%;
+}
+
+/* Style for editable inputs */
+.edit-mode input.editable {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 2px 0;
+    width: calc(100% - 12px); /* Account for padding and border */
+}
+
+.product-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}

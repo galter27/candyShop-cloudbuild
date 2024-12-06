@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sweetly - Admin</title>
+        <link rel="stylesheet" href="/public/styles/main.css">
+        <link rel="stylesheet" href="/public/styles/personal.css">
+        <link rel="stylesheet" href="/public/styles/productPreview.css">
+        <link rel="stylesheet" href="/public/styles/cards.css">
+        <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    </head>
+    <body>  
+        <!-- Topbar -->
+        <%- include('sideMenu.ejs') %>
+        <!-- Product Section -->
+        <section class="page-content">
+                <div class="personal-header">
+                    <h2>Hello <%= user.name %></h2>
+                </div>
+                <div class="personal-content">
+                    <div class="sub-menu">
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/customers'">All Users</button>
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/orders'">All Orders</button>
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/products'">All Products</button>
+                        <button class="menu-option active" onclick="window.location.href='/personal/admin/addProducts'">Add Product</button>
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/stores'">All Stores</button>
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/addStores'">Add Store</button>
+                        <button class="menu-option" onclick="window.location.href='/personal/admin/facebookInfo'">Facebook Info</button>
+                    </div>
+                    <!-- Account Details -->
+                    <div class="main-content">
+                        <div id="customers" class="content-item active">
+                            <div class="container">                            
+                                <div class="product-preview-container">
+                                    <!-- Form Card -->
+                                    <div class="admin-card">
+                                        <form id="productForm">
+                                            <div class="input-group">
+                                                <input type="text" id="name" name="name" placeholder="Product Name" required>
+                                            </div>
+                                            <div class="input-row">
+                                                <div class="input-group">
+                                                    <input type="text" id="price" name="price" placeholder="Product Price" required>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="text" id="inventory" name="inventory" placeholder="Inventory" required>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="input-group">
+                                                <input type="text" id="description" name="description" placeholder="Description" required>
+                                            </div>
+
+                                            <div class="input-group">
+                                                <label for="FlavorDropdown">Select Flavors</label>
+                                                <select id="FlavorDropdown">
+                                                    <option value="" disabled selected>Flavors</option>
+                                                    <option value="Sweet">Sweet</option>
+                                                    <option value="Salty">Salty</option>
+                                                    <option value="Sour">Sour</option>
+                                                    <option value="Spicy">Spicy</option>
+                                                    <option value="Bitter">Bitter</option>
+                                                </select>
+                                                <div id="selectedFlavors"></div>
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="AllerganDropdown">Select Allergans</label>
+                                                <select id="AllerganDropdown">
+                                                    <option value="" disabled selected>Allergans</option>
+                                                    <option value="Gluten">Gluten</option>
+                                                    <option value="Dairy">Dairy</option>
+                                                    <option value="Nuts">Nuts</option>
+                                                    <option value="Soy">Soy</option>
+                                                    <option value="Eggs">Eggs</option>
+                                                </select>
+                                                <div id="selectedAllergans"></div>
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="SweetTypeDropdown">Select Sweet Type</label>
+                                                <select id="SweetTypeDropdown">
+                                                    <option value="" disabled selected>Sweet Type</option>
+                                                    <option value="Chocolate">Chocolate</option>
+                                                    <option value="Gummy">Gummy</option>
+                                                    <option value="Licorice">Licorice</option>
+                                                    <option value="Drinks">Drinks</option>
+                                                    <option value="Snacks">Snacks</option>
+                                                </select>
+                                                <div id="selectedSweetType"></div>
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="KosherDropdown">Select if Kosher</label>
+                                                <select id="KosherDropdown">
+                                                    <option value="" disabled selected>Kosher?</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                                <div id="selectedKosher"></div>
+                                            </div>
+
+                                            <div class="input-row">
+                                                <div class="input-group">
+                                                    <input type="file" id="fileInput" name="image" accept=".svg" required>
+                                                </div>
+                                                <div class="input-group">
+                                                    <label for="postToFacebook">Facebook:<input type="checkbox" id="postToFacebook" name="postToFacebook"></label>
+                                                </div>
+                                            </div>
+                                            <button id="submitButton" type="submit" onClick="submitProduct()">Create Product</button>
+                                        </form>
+                                    </div>
+                                    <!-- Live Preview Card -->
+                                    <div class="product-card">
+                                        <div class="product-image-container">
+                                            <span class="stock-banner" id="previewInventory"></span>
+                                            <img class="product-image" id="previewImage">
+                                        </div>
+                                        <!-- Name, Description, and Price (2/6 of the card) -->
+                                        <div class="product-info">
+                                                <div class="product-text">
+                                                    <div class="product-name left" id="previewName"></div>
+                                                    <div class="product-description left" id="previewDescription"></div>
+                                                </div>
+                                                    <div class="product-price right" id="previewPrice"></div>                                                
+                                        </div>    
+                                        <!-- Divider -->
+                                        <hr class="product-divider">
+                                            <div class="product-actions">
+                                                <img class="remove-product" src="/public/images/trash.svg">
+                                                <img class="edit-btn" src="/public/images/edit.svg">
+                                            </div>
+                                    </div>
+                                    <div id="success-alert" class="custom-alert hidden">
+                                        Product Added
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="bthn" lang="en"></div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <p>© Sweetly | Adi Brodesky | Gal Ternovsky | Shahar Shabtay | Ziv Klein </p>
+            </div>
+            <div class="footer-right">
+                <div class="hover-container">
+                    <a href="#" class="about-us" id="openAboutModal">About Us</a>
+                    |
+                    <a href="#" class="talk-to-us" id="openTalkModal">Talk To Us</a>
+                    |
+                    <a href="https://tinyurl.com/sweetly-facebook" target="_blank" class="facebook">Facebook</a>
+                    |
+                    <a href="#" class="adminStatistics" id="openAdminStatisticsModel">Admin statistics</a>
+                </div>
+                
+                <!-- Modal for About Us -->
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>About Us</h2>
+                        <p>At Sweetly, we make finding your favorite sweets easy and enjoyable. We have the most special candies and a lot of stores waiting for you!</p>
+                    </div>
+                </div>
+                
+                <!-- Modal for Talk To Us -->
+                <div id="talkModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Talk To Us</h2>
+                        <p>You can reach us at support@candyshop.com or follow us on social media for the latest updates and tips!</p>
+                    </div>
+                </div>
+                <!-- Modal for Admin Statistics -->
+                <div id="adminStatisticsModel" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Users Statistics</h2>
+                        <canvas id="adminChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Scripts --> 
+        <script src="/public/js/personal.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="/public/js/adminStatistics.js"></script>
+    </body>
+</html>

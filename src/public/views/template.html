@@ -1,0 +1,70 @@
+<html>
+    <html lang="en">
+    <head>
+        <title></title>
+        <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/public/styles/main.css">
+
+
+    </head>
+    <body>
+        <header>
+            <nav class="main-navbar">
+                <section class="navbar-left">
+                    <img src="/public/images/shooping_cart.svg" class="navbar-icon">
+                    <img src="/public/images/logout.svg" class="navbar-icon" onclick="window.location.href='/logout'">
+                </section>
+                <section class="navbar-center">
+                    <img src="/public/images/logo.svg" class="logo">
+                </section>
+                <section class="navbar-right">
+                    <img src="/public/images/nearMe.svg" class="navbar-icon" onclick="window.location.href='/nearMe'">
+                    <div class="side-menu">
+                        <div class="sideMenu-sign">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <div class="sideMenu-content">
+                            <div class="sideMenu-search">
+                                <input type="text" placeholder="Search for candies...">
+                            </div>
+                            <ul class="sideMenu-categories">
+                                <li>Chocolate</li>
+                                <li>Gummy Bears</li>
+                                <li>Licorice</li>
+                                <li>Lollipops</li>
+                                <li>Hard Candies</li>
+                                <li>Sour Candies</li>
+                                <li>Caramel</li>
+                            </ul>
+                            <div class="sideMenu-personal">
+                                <% if (user.name) { %> 
+                                    <div class="sideMenu-iconContainer">
+                                        <a href="/personal/myAccount">
+                                            <img src="/public/images/user.svg" class="sideMenu-icon">
+                                            <div class="sideMenu-iconLabel"><%= user.name %></div>
+                                        </a>
+                                    </div>
+                                <% } %> 
+                                <% if (user.role === 'admin') { %> 
+                                    <div class="sideMenu-iconContainer">
+                                        <a href="/personal/admin">
+                                            <img src="/public/images/adminIcon.svg" class="sideMenu-icon">
+                                            <div class="sideMenu-iconLabel">Manage Shop</div>
+                                        </a>
+                                    </div>
+                                <% } %> 
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </nav>
+        </header>
+        <section class="page-content"></section>
+        <footer class="footer">
+            <section class="footer-left"></section>
+            <section class="footer-right"></section>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,374 @@
+[{
+  "_id": {
+    "$oid": "671a73f02cfc670bda6d6ce9"
+  },
+  "productId": 2670143,
+  "name": "Reese’s",
+  "flavors": [
+    "Sweet",
+    "Salty"
+  ],
+  "allergans": [
+    "Nuts"
+  ],
+  "sweetType": "Gummy",
+  "kosher": "No",
+  "description": "White Chocolate",
+  "price": 29,
+  "imageUrl": "/public/images/product-images/product_2670143.svg",
+  "inventory": 25
+},
+{
+  "_id": {
+    "$oid": "671a746a2cfc670bda6d6cee"
+  },
+  "productId": 2314872,
+  "name": "Pringles",
+  "flavors": [
+    "Salty",
+    "Spicy"
+  ],
+  "allergans": [
+    "Soy"
+  ],
+  "sweetType": "Snacks",
+  "kosher": "Yes",
+  "description": "Salsa",
+  "price": 25,
+  "imageUrl": "/public/images/product-images/product_2314872.svg",
+  "inventory": 94
+},
+{
+  "_id": {
+    "$oid": "671a74d52cfc670bda6d6cf8"
+  },
+  "productId": 3969697,
+  "name": "Cheetos",
+  "flavors": [
+    "Salty",
+    "Spicy"
+  ],
+  "allergans": [
+    "Soy"
+  ],
+  "sweetType": "Candies",
+  "kosher": "No",
+  "description": "Beef",
+  "price": 19,
+  "imageUrl": "/public/images/product-images/product_3969697.svg",
+  "inventory": 0
+},
+{
+  "_id": {
+    "$oid": "671a761b2cfc670bda6d6cfd"
+  },
+  "productId": 6129979,
+  "name": "Mac & Cheese",
+  "flavors": [
+    "Salty"
+  ],
+  "allergans": [
+    "Gluten",
+    "Dairy"
+  ],
+  "sweetType": "Candies",
+  "kosher": "No",
+  "description": "Chedder",
+  "price": 22,
+  "imageUrl": "/public/images/product-images/product_6129979.svg",
+  "inventory": 99
+},
+{
+  "_id": {
+    "$oid": "671a7a952cfc670bda6d6d18"
+  },
+  "productId": 7616503,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "Yes",
+  "description": "Strawberry",
+  "price": 12,
+  "imageUrl": "/public/images/product-images/product_7616503.svg",
+  "inventory": 92
+},
+{
+  "_id": {
+    "$oid": "671a7b4d2cfc670bda6d6d1d"
+  },
+  "productId": 8903298,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "Yes",
+  "description": "Starfish",
+  "price": 12,
+  "imageUrl": "/public/images/product-images/product_8903298.svg",
+  "inventory": 100
+},
+{
+  "_id": {
+    "$oid": "671a7bc02cfc670bda6d6d22"
+  },
+  "productId": 1283293,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "Yes",
+  "description": "Shark",
+  "price": 12,
+  "imageUrl": "/public/images/product-images/product_1283293.svg",
+  "inventory": 98
+},
+{
+  "_id": {
+    "$oid": "671a7c182cfc670bda6d6d27"
+  },
+  "productId": 6522661,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "No",
+  "description": "Lips",
+  "price": 12,
+  "imageUrl": "/public/images/product-images/product_6522661.svg",
+  "inventory": 100
+},
+{
+  "_id": {
+    "$oid": "671a7c892cfc670bda6d6d2c"
+  },
+  "productId": 1332457,
+  "name": "Licorice",
+  "flavors": [
+    "Sweet"
+  ],
+  "allergans": [],
+  "sweetType": "Licorice",
+  "kosher": "No",
+  "description": "Red & White",
+  "price": 15,
+  "imageUrl": "/public/images/product-images/product_1332457.svg",
+  "inventory": 100
+},
+{
+  "_id": {
+    "$oid": "671a7cd12cfc670bda6d6d31"
+  },
+  "productId": 3788547,
+  "name": "Licorice",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Licorice",
+  "kosher": "Yes",
+  "description": "Watermelon",
+  "price": 15,
+  "imageUrl": "/public/images/product-images/product_3788547.svg",
+  "inventory": 100
+},
+{
+  "_id": {
+    "$oid": "671a7d112cfc670bda6d6d36"
+  },
+  "productId": 518054,
+  "name": "Licorice",
+  "flavors": [
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Licorice",
+  "kosher": "No",
+  "description": "Black",
+  "price": 15,
+  "imageUrl": "/public/images/product-images/product_518054.svg",
+  "inventory": 100
+},
+{
+  "_id": {
+    "$oid": "671a7dbc2cfc670bda6d6d3b"
+  },
+  "productId": 6133443,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "No",
+  "description": "Hot Dog",
+  "price": 15,
+  "imageUrl": "/public/images/product-images/product_6133443.svg",
+  "inventory": 49
+},
+{
+  "_id": {
+    "$oid": "671a7e432cfc670bda6d6d40"
+  },
+  "productId": 8930205,
+  "name": "Gummy",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Gummy",
+  "kosher": "Yes",
+  "description": "Coca Cola",
+  "price": 26,
+  "imageUrl": "/public/images/product-images/product_8930205.svg",
+  "inventory": 50
+},
+{
+  "_id": {
+    "$oid": "671a7eac2cfc670bda6d6d45"
+  },
+  "productId": 1559770,
+  "name": "Arizona",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [
+    "Soy"
+  ],
+  "sweetType": "Drinks",
+  "kosher": "Yes",
+  "description": "Peach",
+  "price": 17,
+  "imageUrl": "/public/images/product-images/product_1559770.svg",
+  "inventory": 20
+},
+{
+  "_id": {
+    "$oid": "671a7f042cfc670bda6d6d4a"
+  },
+  "productId": 1849985,
+  "name": "Boba Tea",
+  "flavors": [
+    "Sour"
+  ],
+  "allergans": [],
+  "sweetType": "Drinks",
+  "kosher": "No",
+  "description": "Lychee",
+  "price": 15,
+  "imageUrl": "/public/images/product-images/product_1849985.svg",
+  "inventory": 20
+},
+{
+  "_id": {
+    "$oid": "671a7f372cfc670bda6d6d4f"
+  },
+  "productId": 1169037,
+  "name": "Mentos",
+  "flavors": [
+    "Sweet"
+  ],
+  "allergans": [],
+  "sweetType": "Drinks",
+  "kosher": "No",
+  "description": "Fruits",
+  "price": 14,
+  "imageUrl": "/public/images/product-images/product_1169037.svg",
+  "inventory": 10
+},
+{
+  "_id": {
+    "$oid": "671a7f6f2cfc670bda6d6d54"
+  },
+  "productId": 8232962,
+  "name": "Twix",
+  "flavors": [
+    "Sweet",
+    "Bitter"
+  ],
+  "allergans": [
+    "Dairy"
+  ],
+  "sweetType": "Drinks",
+  "kosher": "Yes",
+  "description": "Coffee",
+  "price": 29,
+  "imageUrl": "/public/images/product-images/product_8232962.svg",
+  "inventory": 1
+},
+{
+  "_id": {
+    "$oid": "671cdac900606e492ebc49aa"
+  },
+  "productId": 3482647,
+  "name": "Malters",
+  "flavors": [
+    "Sweet"
+  ],
+  "allergans": [
+    "Gluten",
+    "Dairy"
+  ],
+  "sweetType": "Chocolate",
+  "kosher": "Yes",
+  "description": "Maxi Pack",
+  "price": 55,
+  "imageUrl": "/public/images/product-images/product_3482647.svg",
+  "inventory": 0
+},
+{
+  "_id": {
+    "$oid": "671cdb1d00606e492ebc49b4"
+  },
+  "productId": 9862154,
+  "name": "Oreo",
+  "flavors": [
+    "Sweet",
+    "Sour"
+  ],
+  "allergans": [
+    "Gluten"
+  ],
+  "sweetType": "Chocolate",
+  "kosher": "Yes",
+  "description": "Strawberry",
+  "price": 19,
+  "imageUrl": "/public/images/product-images/product_9862154.svg",
+  "inventory": 99
+},
+{
+  "_id": {
+    "$oid": "671cdb5100606e492ebc49b9"
+  },
+  "productId": 3380584,
+  "name": "M&M's",
+  "flavors": [
+    "Sweet"
+  ],
+  "allergans": [
+    "Gluten",
+    "Nuts",
+    "Eggs"
+  ],
+  "sweetType": "Chocolate",
+  "kosher": "No",
+  "description": "Brownie",
+  "price": 20,
+  "imageUrl": "/public/images/product-images/product_3380584.svg",
+  "inventory": 8
+}]

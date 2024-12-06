@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Seetly - My Account</title>
+        <link rel="stylesheet" href="/public/styles/main.css">
+        <link rel="stylesheet" href="/public/styles/personal.css">
+        <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <!-- Topbar -->
+        <%- include('sideMenu.ejs') %>
+        <!-- Product Section -->
+        <section class="page-content">
+            <header class="personal-header">
+                <h2>Hello <%= user.name %></h2>
+            </header>
+            <div class="personal-content">
+                <!-- Sub Menu -->
+                <div class="sub-menu">
+                    <button class="menu-option" onclick="window.location.href='/personal/myAccount/details'">My Details</button>
+                    <button class="menu-option" onclick="window.location.href='/personal/myAccount/favorite'">My Favorites</button>
+                    <button class="menu-option active" onclick="window.location.href='/personal/myAccount/orders'">My Orders</button>                    
+                </div>
+                <!-- All Products -->
+                <div class="main-content">
+                    <div id="products" class="content-item active">
+                        <div class="container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Order Date</th>
+                                        <th>Total Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% orders.forEach(order => { %>
+                                        <tr>
+                                            <td><%= order.orderId %></td>
+                                            <td><%= new Date(order.orderDate).toLocaleDateString() %></td>
+                                            <td>
+                                                <% let totalPrice = order.totalPrice.toFixed(2); %>
+                                                <% if (currency === 'USD' && rates['USD']) { %>
+                                                <%= (totalPrice * rates['USD']).toFixed(2) %> $
+                                                <% } else if (currency === 'EUR' && rates['EUR']) { %>
+                                                <%= (totalPrice * rates['EUR']).toFixed(2) %> €
+                                                <% } else { %>
+                                                <%= totalPrice %> ₪
+                                                <% } %>
+                                            </td>
+                                            <td><%= order.status %></td>
+                                            <td class="action-buttons">
+                                                <img id="see-order" class="order-actions see-order-btn see-order2-btn" src="/public/images/seeOrder.svg" data-order-id="<%= order.orderId %>" onclick="showCustOrder(this)">
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="bthn" lang="en"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <p>© Sweetly | Adi Brodesky | Gal Ternovsky | Shahar Shabtay | Ziv Klein </p>
+            </div>
+            <div class="footer-right">
+                <div class="hover-container">
+                    <a href="#" class="about-us" id="openAboutModal">About Us</a>
+                    |
+                    <a href="#" class="talk-to-us" id="openTalkModal">Talk To Us</a>
+                    |
+                    <a href="https://tinyurl.com/sweetly-facebook" target="_blank" class="facebook">Facebook</a>
+                    |
+                    <a href="#" class="statistics" id="openstatisticsModel">Statistics</a>
+                </div>
+                
+                <!-- Modal for About Us -->
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>About Us</h2>
+                        <p>At Sweetly, we make finding your favorite sweets easy and enjoyable. We have the most special candies and a lot of stores waiting for you!</p>
+                    </div>
+                </div>
+                
+                <!-- Modal for Talk To Us -->
+                <div id="talkModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Talk To Us</h2>
+                        <p>You can reach us at support@candyshop.com or follow us on social media for the latest updates and tips!</p>
+                    </div>
+                </div>
+
+                <!-- Modal for Statistics -->
+                <div id="statisticsModel" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Candies Statistics</h2>
+                        <canvas id="candiesChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <script src="/public/js/personal.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="/public/js/currency.js"></script>
+    </body>
+</html>

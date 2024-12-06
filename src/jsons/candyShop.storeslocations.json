@@ -1,0 +1,140 @@
+[{
+  "_id": {
+    "$oid": "672f529a987690b7d3a2ae46"
+  },
+  "storeId": 1731154586985,
+  "name": "Sweet Haven",
+  "coordinates": [
+    32.0853,
+    34.7818
+  ],
+  "address": {
+    "city": "Tel Aviv",
+    "street": "Dizengoff",
+    "number": 123,
+    "_id": {
+      "$oid": "672f529a987690b7d3a2ae47"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f52c0987690b7d3a2ae4a"
+  },
+  "storeId": 1731154624716,
+  "name": "Candyland",
+  "coordinates": [
+    31.7683,
+    35.2137
+  ],
+  "address": {
+    "city": "Jerusalem",
+    "street": "Jaffa",
+    "number": 210,
+    "_id": {
+      "$oid": "672f52c0987690b7d3a2ae4b"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f52e8987690b7d3a2ae5d"
+  },
+  "storeId": 1731154664048,
+  "name": "Sugar Rush",
+  "coordinates": [
+    32.794,
+    34.9896
+  ],
+  "address": {
+    "city": "Haifa",
+    "street": "Moriah",
+    "number": 55,
+    "_id": {
+      "$oid": "672f52e8987690b7d3a2ae5e"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f5305987690b7d3a2ae61"
+  },
+  "storeId": 1731154693216,
+  "name": "The Candy Jar",
+  "coordinates": [
+    31.2518,
+    34.7913
+  ],
+  "address": {
+    "city": "Beersheba",
+    "street": "Rager",
+    "number": 90,
+    "_id": {
+      "$oid": "672f5305987690b7d3a2ae62"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f532c987690b7d3a2ae65"
+  },
+  "storeId": 1731154732105,
+  "name": "Lolly’s Treats",
+  "coordinates": [
+    31.9645,
+    34.8044
+  ],
+  "address": {
+    "city": "Rishon LeZion",
+    "street": "Herzl",
+    "number": 45,
+    "_id": {
+      "$oid": "672f532c987690b7d3a2ae66"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f5392987690b7d3a2ae85"
+  },
+  "storeId": 1731154834153,
+  "name": "Sweet Dreams",
+  "coordinates": [
+    32.084,
+    34.8878
+  ],
+  "address": {
+    "city": " Petah Tikva",
+    "street": "HaRav Reines",
+    "number": 5,
+    "_id": {
+      "$oid": "672f5392987690b7d3a2ae86"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672f53ca987690b7d3a2ae89"
+  },
+  "storeId": 1731154890842,
+  "name": "Candy Castle",
+  "coordinates": [
+    32.3215,
+    34.8532
+  ],
+  "address": {
+    "city": "Netanya",
+    "street": "HaMelech David",
+    "number": 12,
+    "_id": {
+      "$oid": "672f53ca987690b7d3a2ae8a"
+    }
+  },
+  "__v": 0
+}]

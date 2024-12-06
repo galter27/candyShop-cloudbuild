@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sweetly - Cart</title>
+        <link rel="stylesheet" type="text/css" href="/public/styles/cart.css">
+        <link rel="stylesheet" type="text/css" href="/public/styles/main.css">
+        <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <!-- Topbar -->
+        <%- include('sideMenu.ejs') %>
+        <!-- Product Section -->
+        <section class="page-content" style="display: flex; padding: 20px; box-sizing: border-box;">
+            <!-- Cart Items -->
+            <div class="cart-container" style="flex: 2; padding: 20px; background-color: white;">
+                <!-- List of cart items -->
+                <% if (cart.length === 0) { %>
+                    <div class="empty-cart-message" style="text-align: center; font-size: 24px; margin: 20px 0;">
+                        Your cart is empty, come on, go shopping!
+                        <a href="/products" class="shop-now-button" style="display: inline-block; margin-top: 10px; color: blue; text-decoration: none;">Shop Now</a>
+                    </div>
+                <% } else { %>
+                    <% cart.forEach(function(item) { %>
+                    <div class="cart-item <%= item.inventory === 0 ? 'sold-out' : '' %>" data-inventory="<%= item.inventory %>" id="cart-item-<%= item.productId %>"  data-product-id="<%= item.productId %>">
+                        <!-- Product Image -->
+                        <div class="product-image">
+                            <% if (item.inventory === 0) { %>
+                                <span class="stock-banner out-of-stock">Sold Out</span>
+                            <% } else if (item.inventory <= 5) { %>
+                                <span class="stock-banner"><%= item.inventory %> left</span>
+                            <% } %>
+                            
+                            <img src="<%= item.imageUrl %>" alt="<%= item.name %>">
+                        </div>
+            
+                        <!-- Product Details -->
+                        <div class="cart-product-details" style="flex-grow: 2; margin-right: 20px;">
+                            <a href="/products/<%= item.productId %>" class="product-link">
+                                <div class="cart-product-name" style="font-weight: bold; margin-bottom: 5px;">
+                                <%= item.name %> | <%= item.description || 'No description available.' %>
+                                </div>
+                                <div class="cart-product-price">
+                                    <% let price = item.price; %>
+                                    <% if (currency === 'USD' && rates['USD']) { %>
+                                    <%= (price * rates['USD']).toFixed(2) %> $
+                                    <% } else if (currency === 'EUR' && rates['EUR']) { %>
+                                    <%= (price * rates['EUR']).toFixed(2) %> €
+                                    <% } else { %>
+                                    <%= price %> ₪
+                                    <% } %>
+                                </div><br>
+                            </a>
+                            <!-- Quantity Selector and Update -->
+                            <form action="/cart/update" method="POST">
+                                <input type="hidden" name="productId" value="<%= item.productId %>">
+                                <input class="quantity" type="number" name="quantity" min="1" max="<%= item.inventory %>" value="<%= item.quantity %>" <%= item.inventory === 0 ? 'disabled' : '' %>>
+                                <button class="update-button" type="submit" <%= item.inventory === 0 ? 'disabled' : '' %>>Update</button>
+                            </form>
+                        </div>
+            
+                        <!-- Price -->
+                        <div class="price" style="font-size: 18px; text-align: right;">
+                            <% let subTotalPrice = (item.price * item.quantity).toFixed(2); %>
+                            <span class="price">
+                                <% if (currency === 'USD' && rates['USD']) { %>
+                                <%= (subTotalPrice * rates['USD']).toFixed(2) %> $
+                                <% } else if (currency === 'EUR' && rates['EUR']) { %>
+                                <%= (subTotalPrice * rates['EUR']).toFixed(2) %> €
+                                <% } else { %>
+                                <%= subTotalPrice %> ₪
+                                <% } %>   
+                            </span>
+                        </div>
+            
+                        <!-- Remove Product Button -->
+                        <form action="/cart/remove" method="POST" style="align-self: center;">
+                            <input type="hidden" name="productId" value="<%= item.productId %>">
+                            <button class="remove-button" style="background: none; border: none; cursor: pointer;">
+                                <i class="fas fa-times" style="color: red; font-size: 24px;"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <% }); %>
+                <% } %>
+
+            </div>
+        
+            <!-- Order Summary Section -->
+            <div class="order-summary" style="flex: 1; background-color: white; padding: 20px; display: flex; flex-direction: column;">
+                <h2 style="margin-top: 0;">Summary</h2>
+        
+                <!-- Shipping Information -->
+                <div class="shipping-info" style="margin-bottom: 20px;">
+                    <input type="text" id="shipping-city" name="city" placeholder="city" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+                    <input type="text" id="shipping-street" name="street" placeholder="street" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+                    <input type="number" id="shipping-number" name="number" placeholder="number" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+                </div>
+        
+                <!-- Total Price -->
+                <div class="summary-total" style="font-size: 18px; margin-bottom: 20px;">
+                    <span>Total Price:</span>
+                    <% let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0); %>
+                    <span id="total-price" style="font-weight: bold;">
+                        <% if (currency === 'USD' && rates['USD']) { %>
+                            <%= (totalPrice * rates['USD']).toFixed(2) %>$
+                        <% } else if (currency === 'EUR' && rates['EUR']) { %>
+                            <%= (totalPrice * rates['EUR']).toFixed(2) %>€
+                        <% } else { %>
+                            <%= totalPrice.toFixed(2) %>₪
+                        <% } %>
+                    </span>
+
+
+                </div>
+        
+                <!-- Place Order Button -->
+                <% if (cart && cart.length > 0) { %> 
+                        <button class="checkout-button" type="submit" onclick="checkoutCart()">Place Order</button>
+                <% } %>
+            </div>
+            <div id="bthn" lang="en"></div>
+            <div id="checkout-alert" class="custom-alert hidden">Order Placed</div>
+            <div id="update-cart-alert" class="custom-alert hidden">Cart Updated</div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <p>© Sweetly | Adi Brodesky | Gal Ternovsky | Shahar Shabtay | Ziv Klein </p>
+            </div>
+            <div class="footer-right">
+                <div class="hover-container">
+                    <a href="#" class="about-us" id="openAboutModal">About Us</a>
+                    |
+                    <a href="#" class="talk-to-us" id="openTalkModal">Talk To Us</a>
+                    |
+                    <a href="https://tinyurl.com/sweetly-facebook" target="_blank" class="facebook">Facebook</a>
+                </div>
+                
+                <!-- Modal for About Us -->
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>About Us</h2>
+                        <p>At Sweetly, we make finding your favorite sweets easy and enjoyable. We have the most special candies and a lot of stores waiting for you!</p>
+                    </div>
+                </div>
+                
+                <!-- Modal for Talk To Us -->
+                <div id="talkModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <h2>Talk To Us</h2>
+                        <p>You can reach us at support@candyshop.com or follow us on social media for the latest updates and tips!</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <script src="/public/js/products.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="/public/js/cart.js"></script>
+        <script src="/public/js/currency.js"></script>
+</html>
+

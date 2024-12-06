@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="/public/styles/main.css">
+        <link rel="stylesheet" href="/public/styles/cards.css">
+    </head>
+    <body>
+        <header>
+            <nav class="main-navbar">
+                <section class="navbar-left">
+                    <img src="/public/images/shooping_cart.svg" class="navbar-icon" onclick="window.location.href='/cart'">
+                    <form action="/logout" method="POST" style="display: inline;">
+                        <button type="submit" class="navbar-icon">
+                            <img src="/public/images/logout.svg" class="navbar-icon">
+                        </button>
+                    </form>
+                </section>
+                <section class="navbar-center">
+                    <img src="/public/images/logo.svg" class="logo" onclick="window.location.href='/products'">
+                </section>
+                <section class="navbar-right">
+                    <select class="currency-dropdown" id="currency-selector" onchange="changeCurrency()">
+                        <option value="ILS" <%= currency === 'ILS' ? 'selected' : '' %>>₪ ILS</option>
+                        <option value="USD" <%= currency === 'USD' ? 'selected' : '' %>>$ USD</option>
+                        <option value="EUR" <%= currency === 'EUR' ? 'selected' : '' %>>€ EUR</option>
+                    </select>  
+                    <img src="/public/images/nearMe.svg" class="navbar-icon" onclick="window.location.href='/nearMe'">
+                    <div class="side-menu">
+                        <div class="sideMenu-sign" id="sideMenu-sign">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <div class="sideMenu-content" id="sideMenu-content">
+                            <div class="sideMenu-search">
+                                <!-- Form for Search -->
+                                <form id="searchForm" action="/search" method="GET">
+                                    <input type="text" name="q" placeholder="Search for candies..." required>
+                                    <button type="submit" class="search-icon-button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <hr class="side-menu-divider">
+                            <div class="advanced-search-toggle">
+                                <a href="#" id="toggleAdvancedSearch" onclick="showFilter()" class="filter-link">
+                                    <i class="fas fa-filter"></i> <span>Filter</span>
+                                </a>                                
+                            </div>
+                            <div class="advanced-search" id="advancedSearch" style="display: none;">
+                                <div class="filter-category">
+                                    <label for="flavor">Flavor:</label>
+                                    <select class="select-category" name="flavor" id="flavor">
+                                        <option value="All">Flavors</option>
+                                        <option value="Sweet">Sweet</option>
+                                        <option value="Sour">Sour</option>
+                                        <option value="Salty">Salty</option>
+                                        <option value="Spicy">Spicy</option>
+                                        <option value="Bitter">Bitter</option>
+                                    </select>
+                                </div>
+                                <div class="filter-category">
+                                    <label for="allergans">Allergans:</label>
+                                    <select class="select-category" name="allergans" id="allergans">
+                                        <option value="All">Allergans</option>
+                                        <option value="Gluten">Gluten</option>
+                                        <option value="Dairy">Dairy</option>
+                                        <option value="Nuts">Nuts</option>
+                                        <option value="Soy">Soy</option>
+                                        <option value="Eggs">Eggs</option>
+                                    </select>
+                                </div>
+                                <div class="filter-category">
+                                    <label for="sweetType">Sweet Type:</label>
+                                    <select class="select-category" name="sweetType" id="sweetType">
+                                        <option value="All">Sweet Types</option>
+                                        <option value="Chocolate">Chocolate</option>
+                                        <option value="Gummy">Gummy</option>
+                                        <option value="Licorice">Licorice</option>
+                                        <option value="Drinks">Drinks</option>
+                                        <option value="Snacks">Snacks</option>
+                                    </select>
+                                </div>
+                                <div class="filter-category">
+                                    <label for="kosher">Kosher:</label>
+                                    <select class="select-category" name="kosher" id="kosher">
+                                        <option value="All">Kosher</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <button type="submit" id="applyFilterButton" class="filter-apply-btn" onclick="searchFilter()">Apply Filters</button>
+                            </div>
+                            <hr class="side-menu-divider">
+                            <ul class="sideMenu-categories">
+                                <li><a class="side-menu-category" href="/search/sweetType/Chocolate">Chocolate</a></li>
+                                <li><a class="side-menu-category" href="/search/sweetType/Gummy">Gummy</a></li>
+                                <li><a class="side-menu-category" href="/search/sweetType/Licorice">Licorice</a></li>
+                                <li><a class="side-menu-category" href="/search/sweetType/Drinks">Drinks</a></li>
+                                <li><a class="side-menu-category" href="/search/sweetType/Snacks">Snacks</a></li>
+                            </ul>
+                            <div class="sideMenu-personal">
+                                <% if (user.name) { %> 
+                                    <div class="sideMenu-iconContainer">
+                                        <a href="/personal/myAccount">
+                                            <img src="/public/images/user.svg" class="sideMenu-icon">
+                                            <div class="sideMenu-iconLabel"><%= user.name %></div>
+                                        </a>
+                                    </div>
+                                <% } %> 
+                                <% if (user.role === 'admin') { %> 
+                                    <div class="sideMenu-iconContainer">
+                                        <a href="/personal/admin">
+                                            <img src="/public/images/adminIcon.svg" class="sideMenu-icon">
+                                            <div class="sideMenu-iconLabel">Manage Shop</div>
+                                        </a>
+                                    </div>
+                                <% } %> 
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </nav>
+        </header>
+        <aside class="sideMenu-videos" id="sideMenu-videos">
+            <button class="close-button" id="close-button">&times;</button>
+            <video class="sideMenu-video" muted>
+                <source src="/public/videos/heartcandy.mp4" type="video/mp4">
+            </video>
+            <video class="sideMenu-video" muted>
+                <source src="/public/videos/gummy.mp4" type="video/mp4">
+            </video>
+            <video class="sideMenu-video" muted>
+                <source src="/public/videos/donut.mp4" type="video/mp4">
+            </video>
+            <video class="sideMenu-video" muted>
+                <source src="/public/videos/cookies.mp4" type="video/mp4">
+            </video>
+        </aside>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/public/js/statistics.js"></script>
+        <script src="/public/js/products.js"></script>            
+        <script src="/public/js/cart.js"></script>
+        <script src="/public/js/main.js"></script>
+        <script src="/public/js/search.js"></script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweetly - Stores</title>
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/maps.css">
+</head>
+<body>
+    <!-- Topbar -->
+        <%- include('sideMenu.ejs') %>
+    <!-- Product Section -->
+    <section class="page-content">
+        <div id="googleMap" style="height: 500px; width: 100%;"></div>
+        <div id="bthn" lang="en"></div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <p>© Sweetly | Adi Brodesky | Gal Ternovsky | Shahar Shabtay | Ziv Klein </p>
+        </div>
+        <div class="footer-right">
+            <div class="hover-container">
+                <a href="#" class="about-us" id="openAboutModal">About Us</a>
+                |
+                <a href="#" class="talk-to-us" id="openTalkModal">Talk To Us</a>
+                |
+                <a href="https://tinyurl.com/sweetly-facebook" target="_blank" class="facebook">Facebook</a>
+            </div>
+            
+            <!-- Modal for About Us -->
+            <div id="aboutModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>About Us</h2>
+                    <p>At Sweetly, we make finding your favorite sweets easy and enjoyable. We have the most special candies and a lot of stores waiting for you!</p>
+                </div>
+            </div>
+            
+            <!-- Modal for Talk To Us -->
+            <div id="talkModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Talk To Us</h2>
+                    <p>You can reach us at support@candyshop.com or follow us on social media for the latest updates and tips!</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="/public/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&callback=initMap" async defer></script>
+    <script src="/public/js/maps.js"></script>
+</body>
+</html>
