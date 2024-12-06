@@ -1,6 +1,5 @@
 substitutions:
-  _TAG: '$SHORT_SHA'
-  _IMAGE_NAME: gcr.io/$PROJECT_ID/$candyShop:$_TAG
+  _IMAGE_NAME: 'gcr.io/${PROJECT_ID}/candy-shop:${SHORT_SHA}'
 
 steps:
 
@@ -8,6 +7,8 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', '$_IMAGE_NAME', '.']
 
+images:
+  - $_IMAGE_NAME
 
 options:
   logging: CLOUD_LOGGING_ONLY
