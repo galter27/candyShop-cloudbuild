@@ -5,10 +5,34 @@ steps:
 
   # Build docker image 
   - name: 'gcr.io/cloud-builders/docker'
+    id: 'build docker image'
     args: ['build', '-t', '$_IMAGE_NAME', '.']
+
+  # Get .env file for compose
+  - name: gcr.io/cloud-builders/gcloud
+    id: 'get .env file'
+    entrypoint: 'bash'
+    args: [ '-c', "gcloud secrets versions access latest --secret=candyshop_compose_env_file --format='get(payload.data)' | tr '_-' '/+' | base64 -d > .env" ]
+
+  # Start compose services
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'start compose services'
+    entrypoint: 'bash'
+    env:
+      - 'IMAGE_NAME=${_IMAGE_NAME}'
+    args:
+      - '-c'
+      - |
+          docker-compose --env-file=.env -f ./docker-compose.yaml up -d
+
 
 images:
   - $_IMAGE_NAME
+
+# availableSecrets:
+#   secretManager:
+#   - versionName: projects/563986191732/secrets/candyshop_compose_env/versions/1
+#     env: 'COMPOSE_ENV_FILE'
 
 options:
   logging: CLOUD_LOGGING_ONLY

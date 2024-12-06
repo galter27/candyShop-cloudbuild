@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  mongodb:
+    image: mongo:7.0.15
+    container_name: candy_shop_mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - candy_shop_network
+    volumes:
+      - mongo_volume:/data/db
+
+  app:
+    image: ${IMAGE_NAME}
+    container_name: candy_shop_app
+    ports:
+      - 3000:3000
+    networks:
+      - candy_shop_network
+    volumes:
+      - ./.env:/app/.env
+
+networks:
+  candy_shop_network:
+
+volumes:
+  mongo_volume:
