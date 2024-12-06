@@ -10,7 +10,7 @@ steps:
 
   # Get .env file for compose
   - name: gcr.io/cloud-builders/gcloud
-    id: 'get .env file'
+    id: 'get compose .env file'
     entrypoint: 'bash'
     args: [ '-c', "gcloud secrets versions access latest --secret=candyshop_compose_env_file --format='get(payload.data)' | tr '_-' '/+' | base64 -d > .env" ]
 
@@ -26,16 +26,20 @@ steps:
           docker compose --env-file=.env -f ./docker-compose.yaml up -d 
           docker compose logs app 
 
-
-
+  # Test app response
   - name: 'curlimages/curl'
-    id: 'check app response'
+    id: 'test app response'
     entrypoint: 'sh'
     args:
       - '-c'
       - |
-          sleep 10  # Optional wait time
+          sleep 10
           curl -f http://app:3000 || exit 1
+
+  # Push docker image to GCR if the app passes the test
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push docker image'
+    args: ['push', '$_IMAGE_NAME']
 
 images:
   - $_IMAGE_NAME
